@@ -108,7 +108,6 @@ public class SqlLiteVignetteStorage implements VignetteStorage {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
         }
-        System.out.println("Opened database successfully");
     }
 
     @Override

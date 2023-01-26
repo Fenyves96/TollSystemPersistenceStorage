@@ -4,13 +4,12 @@ import hu.fenyvesvolgyimate.tollsystem.entity.Vignette;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class EmergencyVignetteStorage implements VignetteStorage{
     @Override
@@ -51,9 +50,9 @@ public class EmergencyVignetteStorage implements VignetteStorage{
         vignette.setType(vignetteAttributes[2]);
         vignette.setPrice(Integer.parseInt(vignetteAttributes[3]));
         try {
-            vignette.setDateOfPurchase(new SimpleDateFormat("yyyy-MM-dd").parse(vignetteAttributes[4]));
-            vignette.setValidFrom(new SimpleDateFormat("yyyy-MM-dd").parse(vignetteAttributes[5]));
-            vignette.setValidTo(new SimpleDateFormat("yyyy-MM-dd").parse(vignetteAttributes[6]));
+            vignette.setDateOfPurchase(new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH).parse(vignetteAttributes[4]));
+            vignette.setValidFrom(new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH).parse(vignetteAttributes[5]));
+            vignette.setValidTo(new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH).parse(vignetteAttributes[6]));
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
